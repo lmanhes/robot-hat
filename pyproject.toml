@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "robot-hat"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+smbus2 = "^0.4.3"
+gpiozero = "^2.0.1"
+PyAudio = "^0.2.14"
+spidev = "^3.6"
+pyserial = "^3.5"
+pillow = "^10.4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
