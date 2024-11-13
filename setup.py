@@ -242,6 +242,23 @@ def install():
         do(msg="turn on I2C", cmd='sudo raspi-config nonint do_i2c 0')
         do(msg="turn on SPI", cmd='sudo raspi-config nonint do_spi 0')
 
+        # Copy servohat dtoverlay
+        # =============================
+        print("Copy dtoverlay")
+        DEFAULT_OVERLAYS_PATH = "/boot/firmware/overlays/"
+        LEGACY_OVERLAYS_PATH = "/boot/overlays/"
+        _overlays_path = None
+        if os.path.exists(DEFAULT_OVERLAYS_PATH):
+            _overlays_path = DEFAULT_OVERLAYS_PATH
+        elif os.path.exists(LEGACY_OVERLAYS_PATH):
+           _overlays_path = LEGACY_OVERLAYS_PATH
+        else:
+            _overlays_path = None
+
+        if _overlays_path is not None:
+           do(msg="copy Servo Hat+ dtoverlay",
+            cmd=f'sudo cp ./dtoverlays/sunfounder-servohat+.dtbo {_overlays_path}')
+             
         # Report error
         # =============================
         if len(errors) == 0:
